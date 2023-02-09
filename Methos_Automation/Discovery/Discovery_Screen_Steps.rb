@@ -1,9 +1,6 @@
 #This suite will cover discovery screen analytics event.
 require 'json'
 
-
-
-
 file = File.read('Discovery_Screen.json')
 json = JSON.parse(file)
 
@@ -122,7 +119,6 @@ def check_properties(event_name, properties)
 		elsif key == :source && value == "pass"
 			puts "Passed - #{key}: #{value}"
 		else
-			puts
 			comparison_value = if key ==:event_name
 							"'person_recs_action'"
 						elsif key == :action
@@ -178,9 +174,8 @@ feed_view_properties.each do |key, value|
 	elsif key == :groups_status && value == ""
 		puts "Passed - #{key}: #{value}"
 	else
-		puts
 			comparison_value = if key ==:event_name
-							"'person_recs_action'"
+							"'feed_view'"
 						elsif key == :news_count
 							"10"
 						elsif key == :people_count
@@ -208,7 +203,6 @@ group_recs_view_one_properties.each do |key, value|
 		key == :city && value == "Venice"
 		puts "Passed - #{key}: #{value}"
 	else 
-		puts
 			comparison_value = if key ==:event_name
 							"'group_recs_view'"
 						elsif key == :city
@@ -258,7 +252,6 @@ group_recs_view_two_properties.each do |key, value|
 		key == :city && value == "Venice"
 		puts "Passed - #{key}: #{value}"
 	else 
-		puts
 			comparison_value = if key ==:event_name
 							"'group_recs_view'"
 						elsif key == :city
@@ -286,9 +279,8 @@ group_join_properties.each do |key, value|
 		key == :source && value == "feed"
 		puts "Passed - #{key}: #{value}"
 	else 
-		puts
 			comparison_value = if key ==:event_name
-							"'group_recs_view'"
+							"'group_join'"
 						elsif key == :source
 							"'feed'"
 						end
@@ -307,7 +299,6 @@ group_recs_view_three_properties.each do |key, value|
 		key == :city && value == "Venice"
 		puts "Passed - #{key}: #{value}"
 	else 
-		puts
 			comparison_value = if key ==:event_name
 							"'group_recs_view'"
 						elsif key == :city
@@ -367,9 +358,8 @@ feed_view_two_properties.each do |key, value|
 	elsif key == :groups_status && value == ""
 		puts "Passed - #{key}: #{value}"
 	else
-		puts
 			comparison_value = if key ==:event_name
-							"'person_recs_action'"
+							"'feed_view'"
 						elsif key == :news_count
 							"10"
 						elsif key == :people_count
@@ -399,7 +389,6 @@ news_recs_view_one_properties.each do |key, value|
 		key == :city && value == "Venice"
 		puts "Passed - #{key}: #{value}"
 	else 
-		puts
 			comparison_value = if key ==:event_name
 							"'news_recs_view'"
 						elsif key == :city
@@ -448,7 +437,6 @@ discussion_join_properties.each do |key, value|
 		key == :source && value == "feed"
 		puts "Passed - #{key}: #{value}"
 	else 
-		puts
 			comparison_value = if key ==:event_name
 							"'discussion_join'"
 						elsif key == :source
@@ -461,14 +449,13 @@ discussion_join_properties.each do |key, value|
 
 
 news_recs_view_two_properties = extract_event_name_and_city(news_recs_view_two, 'event', "properties", "$city")
-	news_recs_view_two_properties.each do |key, value|
+news_recs_view_two_properties.each do |key, value|
 	if  key == :event_name && value == "news_recs_view"
 		puts "Passed - #{key}: #{value}"
 	elsif
 		key == :city && value == "Venice"
 		puts "Passed - #{key}: #{value}"
 	else 
-		puts
 			comparison_value = if key ==:event_name
 							"'news_recs_view'"
 						elsif key == :city
@@ -528,7 +515,7 @@ print nested_value
 
 
 
-#same blow
+#same below
 event_name = extract_key_value_pair(person_recs_view_one, "event")
 if event_name != "person_recs_view"
 	puts "Event Name Incorrect: person_recs_view_one"
