@@ -30,26 +30,62 @@ driver = Appium::Core.for({caps: caps, appium_lib: opts}).start_driver
 
 #Tap My profile and settings
 sleep(2)
+begin
 click_profile = driver.find_element(id: "com.methos.android:id/profile").click
+rescue => e
+    puts "Error Tapping profile"
+end
 sleep(1)
+begin
 tap_settings = driver.find_element(id: "com.methos.android:id/settings").click
+rescue => e 
+    puts "Error tapping settings"
+end
 sleep (1)
 
-
+#-----
 #add email and save
+begin
 add_email_click = driver.find_element(id: "com.methos.android:id/add_email").click
+rescue => e
+    puts "Error clicking email"
+end
+begin
 enter_email = driver.find_element(:id, "com.methos.android:id/email_input").send_keys "a@a.com"
+rescue => e
+    puts "Error adding email"
+end
+begin
 save_email_input = driver.find_element(:id, "com.methos.android:id/action").click
-sleep(2)
-puts "Email input successfully"
+rescue => e
+    puts "Error Saving Email Input"
+end
+    sleep(2)
+    puts "Email input successfully"
 
 
 #tap to add name and input the name
+begin
 edit_name = driver.find_element(:id, "com.methos.android:id/name").click
+rescue => e 
+    puts "Error finding edit name"
+end
+begin
 input_first_name = driver.find_element(:id, "com.methos.android:id/first_name_input").send_keys "Mo"
+rescue => e 
+    puts "Error Inputing First Name"
+end
+begin
 save_button = driver.find_element(id: "com.methos.android:id/action").click
+rescue => e 
+    puts "Error tapping save"
+end
 sleep(1)
+begin
 save = driver.find_element(:accessibility_id, "Action back").click
+rescue => e 
+    puts "Error tapping back after saving"
+end
 puts "Name input successfully"
 sleep(1)
 

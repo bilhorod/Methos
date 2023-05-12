@@ -103,7 +103,7 @@ end
 #my_profile_edit_name
 my_profile_edit_name_properties = extract_event_name(my_profile_edit_name, "event")
 my_profile_edit_name_properties.each do |key, value|
-	if key == :event_name && value == "my_profile_edit_name"
+	if (key == :event_name && value == "my_profile_edit_name")
 		puts "Passed - #{key}: #{value}"
 	else
 		comparison_value = if key == :event_name
