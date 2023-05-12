@@ -17,6 +17,12 @@ opts = {
 driver = Appium::Core.for({caps: caps, appium_lib: opts}).start_driver
 
 
+
+#Account Precondition
+#New User
+#Interests selected
+
+
 #Appium execution 
 =begin
     1. Tap Recs>> Person_recs_view fires 						
@@ -30,46 +36,81 @@ driver = Appium::Core.for({caps: caps, appium_lib: opts}).start_driver
     9. Tap news > news_recs_view fires
     10. Tap to like > news_recs_action fires
     11. Tap to pass > news_recs_action fires
+    12. Hit back > Feed_view fires
+    13. Tap search > feed_search fires
+    14. Search a name
+    15. Tap on result > user_view fires
+    16. Tap to connect > connection_request fires
 
-
+#sequential
+app_open
+feed_view
+person_recs_view
+person_recs_action
+person_recs_view
+person_recs_action
 person_recs_view
 group_recs_view
-news_recs_view
-person_recs_action
 group_recs_action
-news_recs_action
-person_recs_open
-group_recs_open
-news_recs_open
-feed_view
+group_recs_view
 group_join
+group_recs_action
+group_recs_view
+news_recs_view
+news_recs_action
+news_recs_view
 discussion_join
-
-
-
+news_recs_action
+news_recs_view
+feed_search
+user_view
+connection_request
 =end
 
-el1 = driver.find_element :xpath, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.FrameLayout[2]"
-el1.click
-el2 = driver.find_element :id, "com.methos.android:id/action_connect"
-el2.click
-el3 = driver.find_element :id, "com.methos.android:id/action_pass"
-el3.click
-el4 = driver.find_element :accessibility_id, "Action back"
-el4.click
-el5 = driver.find_element :xpath, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout/android.widget.FrameLayout[2]"
-el5.click
-el6 = driver.find_element :id, "com.methos.android:id/action_connect"
-el6.click
-el7 = driver.find_element :id, "com.methos.android:id/action_pass"
-el7.click
-el8 = driver.find_element :accessibility_id, "Action back"
-el8.click
-el9 = driver.find_element :xpath, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[3]/android.widget.FrameLayout/android.widget.FrameLayout[2]"
-el9.click
-el10 = driver.find_element :id, "com.methos.android:id/action_connect"
-el10.click
-el11 = driver.find_element :id, "com.methos.android:id/action_pass"
-el11.click
-el12 = driver.find_element :accessibility_id, "Action back"
-el12.click
+
+
+sleep (4)
+
+tap_connections = driver.find_element(id: "com.methos.android:id/packet_connections").click
+sleep(1)
+tap_connect = driver.find_element(:id, "com.methos.android:id/action_connect").click
+sleep(1)
+tap_pass = driver.find_element(:id, "com.methos.android:id/action_pass").click
+sleep(1)
+tap_back = driver.find_element(:accessibility_id, "Action back").click
+sleep(1)
+tap_groups = driver.find_element(id: "com.methos.android:id/packet_groups").click
+sleep(1)
+tap_connect = driver.find_element(:id, "com.methos.android:id/action_connect").click
+sleep(1)
+tap_pass = driver.find_element(:id, "com.methos.android:id/action_pass").click
+sleep(3)
+tap_back= driver.find_element(:accessibility_id, "Action back").click
+sleep(2)
+tap_news = driver.find_element(id: "com.methos.android:id/packet_news").click
+sleep(1)
+tap_connect = driver.find_element(:id, "com.methos.android:id/action_connect").click
+sleep(1)
+tap_pass = driver.find_element(:id, "com.methos.android:id/action_pass").click
+sleep(3)
+tap_back = driver.find_element(:accessibility_id, "Action back").click
+sleep(1)
+tap_search = driver.find_element(:id, "com.methos.android:id/search").click
+sleep(1)
+search = driver.find_element(:id, "com.methos.android:id/input").send_keys "A"
+sleep(1)
+tap_any_name = driver.find_element(:id, "com.methos.android:id/name").click
+sleep(3)
+request_connection = driver.find_element(:id, "com.methos.android:id/connect_request").click
+sleep(3)
+tap_back = driver.find_element(:id, "com.methos.android:id/back").click
+sleep(2)
+tap_back = driver.find_element(:id, "com.methos.android:id/back").click
+sleep(1)
+
+
+
+
+
+
+puts "Test Passed Successfully"

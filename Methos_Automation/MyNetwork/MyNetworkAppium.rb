@@ -2,12 +2,7 @@
 require 'appium_lib_core'
 
 
-=begin
-requires user to have:
-1. Connections 
-2. Be a member of a group
-3. Pending Connection request
-=end
+
 
 caps = {}
 caps["appium:deviceName"] = "Galaxy A12"
@@ -29,23 +24,23 @@ driver = Appium::Core.for({caps: caps, appium_lib: opts}).start_driver
 
 
 
-el1 = driver.find_element(id: "com.methos.android:id/connections").click
+tap_my_network = driver.find_element(id: "com.methos.android:id/connections").click
 #click on first view
 el2 = driver.find_element(id: "com.methos.android:id/content").click
 sleep(1) 
 
 #types message
-el3 = driver.find_element :id, "com.methos.android:id/chat_message_edittext"
+el3 = driver.find_element(:id, "com.methos.android:id/chat_message_edittext")
 el3.send_keys "Test Keys"
 el3.click
 
 #sends message
-el4 = driver.find_element(id: "com.methos.android:id/chat_button_send").click
+send_button = driver.find_element(id: "com.methos.android:id/chat_button_send").click
 sleep(1)
 #clicks on message itself to launch reaction view
 el5 = driver.find_element(id: "com.methos.android:id/text").click
 #clicks on reaction
-el6 = driver.find_element(id: "com.methos.android:id/reaction").click
+tap_on_a_reaction = driver.find_element(id: "com.methos.android:id/reaction").click
 
 
 #share photo 
@@ -80,7 +75,7 @@ chat_send_button = driver.find_element(id:'com.methos.android:id/chat_button_sen
 
 
 #clicks back
-el7 = driver.find_element(id: "com.methos.android:id/back").click
+tap_back = driver.find_element(id: "com.methos.android:id/back").click
 sleep(2)
 
 
